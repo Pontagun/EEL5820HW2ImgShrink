@@ -5,7 +5,7 @@ from PIL import Image
 import math
 
 if __name__ == "__main__":
-    img = cv2.imread(r'512-by-512.jpg', 0)
+    img = cv2.imread(r'512-shrink.jpg', 0)
 
     window = 2
     img_width = img.shape[0]
@@ -22,10 +22,9 @@ if __name__ == "__main__":
             for col in range(0, img_height, window):
                 # | img(col, row)   |  img(col+1, row)  |
                 # | img(col, row+1) | img(col+1, row+1) |
-                # avg_pixel = ((int(img[col, row]) + int(img[col + 1, row]) + int(img[col, row + 1]) + int(
-                #     img[col + 1, row + 1])) / 4)
-                avg_pixel = ((int(img[row, col]) + int(img[row + 1, col]) + int(img[row, col + 1]) + int(
-                    img[row + 1, col + 1])) / 4)
+                avg_pixel = ((int(img[row, col]) + int(img[row + 1, col])
+                              + int(img[row, col + 1]) + int(
+                                img[row + 1, col + 1])) / 4)
 
                 new_img_row.append(avg_pixel)
 
@@ -37,7 +36,7 @@ if __name__ == "__main__":
         # This is to solve technical problem of Python, not about the idea.
         if im.mode != 'RGB':
             im = im.convert('RGB')
-        im.save("512-by-512-shrink.jpg")
+        im.save("shrink.jpg")
     else:
         pass
 
