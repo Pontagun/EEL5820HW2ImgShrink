@@ -5,7 +5,7 @@ from PIL import Image
 import math
 
 if __name__ == "__main__":
-    img = cv2.imread(r'512-shrink.jpg', 0)
+    img = cv2.imread(r'n32.jpg', 0)
 
     window = 2
     img_width = img.shape[0]
@@ -36,7 +36,7 @@ if __name__ == "__main__":
         # This is to solve technical problem of Python, not about the idea.
         if im.mode != 'RGB':
             im = im.convert('RGB')
-        im.save("shrink.jpg")
+        im.save("n16.jpg")
     else:
         pass
 
